@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { WeatherManagerService } from 'src/app/services/weather-manager.service';//src/app/folderHere looks better than ../folderHere
-import { FavouritesService } from 'src/app/services/favourites.service';
+import { WeatherControllerService } from './../services/weather-controller.service';
+
 
 @Component({
   selector: 'app-home',
@@ -11,17 +11,21 @@ import { FavouritesService } from 'src/app/services/favourites.service';
 export class HomePage implements OnInit{
 
   results: Observable<any>;
-  query = '';
+  query = '';//does this two way binding work?
 
-  constructor(private weatherManagerService: WeatherManagerService) {  }
+  constructor(private weatherControllerService: WeatherControllerService) {}
 
   ngOnInit(){
-    this.results = this.weatherManagerService.GetQueryData('Toronto');//Default Display - unless I want to create some place holders or better yet use location data!
+    this.results = this.weatherControllerService.GetQueryData('Toronto');//Default Display - unless I want to create some place holders or better yet use location data!
   }
   searchClicked(){
-    this.results = this.weatherManagerService.GetQueryData(this.query);
-
-    // this.results.subscribe(res => {  }) //going to do *ngFor instead to display
+    if(this.query!=null && this.query!=''){
+    this.results = this.weatherControllerService.GetQueryData(this.query);
+    } else {
+      //make an alert here
+    }
+    // this.results.subscribe(res => {  })//subscribe is how to get data from an observable //going to do *ngFor instead to display
   }
+    
 
 }
