@@ -50,13 +50,12 @@ export class WeatherControllerService {
 
   //might want to create a SaveCurrentWeatherData that's similar but return an object of type favourites instead? 
   //that or instead of returning pipe/mapping to that object and calling addFavourite() which I still need to fix
-  GetCurrentWeatherData(city: string): CurrentWeather {//todo call from favourites list/favourites service to populate each item in the list
+  GetCurrentWeatherData(city: string): Observable<any>{//todo call from favourites list/favourites service to populate each item in the list
     //return 
-    return 
-    this.http.get(
+    return this.http.get(
       `${this.BaseURL}/current.json?key=${this.apiKey}&q=${encodeURI(city)}&aqi=no`//was missing encodeURI() holy
     ).pipe(
-      map((results => {
+      map(results => {
         
         console.log(results)
         return results;

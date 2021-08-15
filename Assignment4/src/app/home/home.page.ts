@@ -11,7 +11,7 @@ import { WeatherControllerService } from './../services/weather-controller.servi
 export class HomePage implements OnInit{
 
   results: Observable<any>;//results of the query/search
-  currentWeatherDisplay: [];//delete if other way works
+  currentWeatherDisplay: Observable<Array<any>>;//delete if other way works
   
   query = '';//hurray two way binding
 
@@ -25,13 +25,16 @@ export class HomePage implements OnInit{
 
     this.results = this.weatherControllerService.GetQueryData(this.query);
     //this.results.subscribe()//probaly should do this in controller?
+
+    this.currentWeatherDisplay
+
     this.results.subscribe(cities => {
       for(let city of cities){
         
         //this.currentWeatherDisplay = 
         this.weatherControllerService.GetCurrentWeatherData(city.name).subscribe(city => {
           for(let data of city){          
-          this.currentWeatherDisplay = data;//this overwrites
+          this.currentWeatherDisplay += data;//this overwrites
           }
         });
         
