@@ -9,19 +9,26 @@ import { map } from 'rxjs/operators';
 export interface Location {
   name: string;
   region: string;
-  country": string;
+  country: string;
 }
 export interface Current {
   temp: string;
-  "region": string;
-  "country": string;
-  "temp_c": 22.0;
-  "temp_f": 71.6;
-  "condition": Condition;
+  precip: string;
+  precip_mm: number;
+  precip_in: number;
+  humidity: number;
+  cloud: number;
+  temp_c: number;
+  temp_f: number;
+  condition: Condition;
 }
 export interface Condition {
-  "text": string,
-  "icon": string
+  text: string;
+  icon: string;
+}
+export interface CurrentWeather{
+  location: Location;
+  current: Current;
 }
 
 @Injectable({
@@ -31,6 +38,8 @@ export class WeatherControllerService {
   apiKey = `f33d0851ca3e4a9a83630733212606`;
   BaseURL = `http://api.weatherapi.com/v1`;
   isMetricPublic:boolean;
+  homeDisplay: CurrentWeather[];
+  favDisplay: CurrentWeather[];
   //queryResults = [];//
   //queryResults: Observable<any>;//should this be an array?
 
@@ -41,15 +50,22 @@ export class WeatherControllerService {
 
   //might want to create a SaveCurrentWeatherData that's similar but return an object of type favourites instead? 
   //that or instead of returning pipe/mapping to that object and calling addFavourite() which I still need to fix
-  GetCurrentWeatherData(city: string): Observable<any> {//todo call from favourites list/favourites service to populate each item in the list
-    return this.http.get(
+  GetCurrentWeatherData(city: string): CurrentWeather {//todo call from favourites list/favourites service to populate each item in the list
+    //return 
+    return 
+    this.http.get(
       `${this.BaseURL}/current.json?key=${this.apiKey}&q=${encodeURI(city)}&aqi=no`//was missing encodeURI() holy
     ).pipe(
-      map(results => {
-        console.log('CW: ', results);
+      map((results => {
         
-        return results;//might need to rename results so I can use the different data set? or I might only need to do that in the page.ts files 
+        console.log(results)
+        return results;
       })
+      // map(results => {
+      //   console.log('CW: ', results);
+        
+      //   return results;//might need to rename results so I can use the different data set? or I might only need to do that in the page.ts files 
+      // })
     );
   }
 
