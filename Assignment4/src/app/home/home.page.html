@@ -2,24 +2,31 @@
   <ion-title slot="start" size="large">
     Ionic/Angular WeatherAPI
   </ion-title>
-  <ion-button slot="end">
+  <ion-button slot="end"><!-- add routerLink here to navigate to favourites -->
       Favourite Locations
   </ion-button>
 </ion-toolbar>
 
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
+  <ion-list>
+    <!--favourites slide option on the left, todo: add favourites.service and onClick send item/map to addFavourites/storage give alert if this was successful or not-->
+    <ion-list-sliding>
+      <ion-item-options side="start">
+        <ion-item-option color="tertiary" (click)="favorite(item)">Add to Favorite</ion-item-option>
+      </ion-item-options>
 
-  <div id="container">
-    <!--
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    -->
-  </div>
+      <!--once the result/getQuery is complete, lists each item as below-->
+      <ion-item *ngFor="let item of (results | async)" >
+        {{item.location.name}}
+      </ion-item>
+      
+      <!--Forecast slide on the right, todo: add cityName to constructor and display details page-->
+      <ion-item-options side="end">
+        <ion-item-option color="success" [routerLink]="['../', 'forecast', item.location.name]">See Forecast</ion-item-option>
+        <!--check if this works cuz I'm not exactly sure how ^^routerLink works might be "['/', 'forecast', item.location.name]" instead-->
+      </ion-item-options>
+    </ion-list-sliding>
+  </ion-list>
 </ion-content>
