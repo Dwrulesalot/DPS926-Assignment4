@@ -10,8 +10,10 @@ import { WeatherControllerService } from './../services/weather-controller.servi
 })
 export class HomePage implements OnInit{
 
-  results: Observable<any>;
-  query = '';//does this two way binding work?
+  results: Observable<any>;//results of the query/search
+  currentWeatherDisplay: [];//delete if other way works
+  
+  query = '';//hurray two way binding
 
   constructor(private weatherControllerService: WeatherControllerService) {}
 
@@ -20,12 +22,31 @@ export class HomePage implements OnInit{
   }
   searchClicked(){
     if(this.query!=null && this.query!=''){
+
     this.results = this.weatherControllerService.GetQueryData(this.query);
+    //this.results.subscribe()//probaly should do this in controller?
+    this.results.subscribe(cities => {
+      for(let city of cities){
+        
+        //this.currentWeatherDisplay = 
+        this.weatherControllerService.GetCurrentWeatherData(city.name).subscribe(city => {
+          for(let data of city){          
+          this.currentWeatherDisplay = data;//this overwrites
+          }
+        });
+        
+      }
+    console.log(this.currentWeatherDisplay);
+    })
+//  this.currentWeatherDisplay.subscribe(res => {  //instead of doing this I'll have the getQueryData loop through 
+//   for(let item of res){ }
+//  })
     } else {
-      //make an alert here
+      //make an alert here 
     }
-    // this.results.subscribe(res => {  })//subscribe is how to get data from an observable //going to do *ngFor instead to display
+    
   }
+
     
 
 }

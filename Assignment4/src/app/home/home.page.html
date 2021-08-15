@@ -11,16 +11,16 @@
 
 <ion-content padding>
  
-  <ion-searchbar [(ngModel)]="query" (ionChange)="searchClicked($value)"> </ion-searchbar><!--this took 3 hours to figure out-->
+  <ion-searchbar placeholder="Please enter a City, Region or Country" [(ngModel)]="query" (ionChange)="searchClicked($value)"> </ion-searchbar><!--this took 3 hours to figure out-->
   <ion-list>
       <!--once the result/getQuery is complete, lists each item as below-->
-      <ion-item *ngFor="let item of (results | async)" [routerLink]="['/forecast-list', item.name]">
-        <!-- can't use this till I actually get currentWeather items fml I forgot
+      <ion-item *ngFor="let item of (currentWeatherDisplay | async)" [routerLink]="['/forecast-list', item.name]"><!-- change this line-->
+        <!-- can't use this till I actually get currentWeather items fml I forgot//this is next on the list change result
         <ion-avatar slot="start">
           <img [src]="">
         </ion-avatar> 
         -->
-        {{item.name}}
+        <!--{{item.name}}-->
       </ion-item>
       
     <!--neither slider nor context menu are working-->
