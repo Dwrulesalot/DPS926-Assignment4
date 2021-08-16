@@ -3,10 +3,10 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>List of your Favourite Cities  </ion-title>
-    <ion-button color="tertiary" slot="end"><!-- todo eventually -->
+    <ion-title>Favourites  </ion-title><!-- todo eventually 
+    <ion-button color="tertiary" slot="end">
       Change To Metric/Imperial
-  </ion-button>
+  </ion-button>-->
   </ion-toolbar>
 </ion-header>
 
@@ -19,12 +19,12 @@
           <ion-row>
             <ion-col>
               <div>
-                Current Weather in: {{item.name}}
+                City: {{item.name}}
               </div>
             </ion-col>
             <ion-col>
               <div>
-                Temperature of: {{item.main.temp}}°C
+                Temp of: {{item.main.temp}}°C
               </div>
             </ion-col>
             <ion-col>
@@ -34,12 +34,12 @@
             </ion-col>
             <ion-col>
               <div>
-                Today's Maximum Temperature: {{item.main.temp_max}}°C
+                Today's Max Temp: {{item.main.temp_max}}°C
               </div>
             </ion-col>
             <ion-col>
               <div>
-                Today's Minimum Temperature: {{item.main.temp_min}}°C
+                Today's Min Temp: {{item.main.temp_min}}°C
               </div>
             </ion-col>
           </ion-row>

@@ -24,11 +24,7 @@ export class ForecastListPage{
   }
 
   addToFavClicked(){
-    //this.newFav.cityName = this.titleName;
     this.favouritesService.set('my-favs',this.titleName);
-    
-    //this.newFav.cityName ='';//only holds it temporarily
-
   }
 
   updateForecastWeather(cityName: string) {

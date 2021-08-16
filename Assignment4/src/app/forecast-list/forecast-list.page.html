@@ -3,12 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-   <ion-title size="large" >{{titleName}}'s Forecast</ion-title>
+   <ion-title >{{titleName}}'s Forecast</ion-title>
     <ion-button color="primary" slot="end" (click)="addToFavClicked()">
-      Save Location to Favourites
+      Save to Favourites
   </ion-button>
     <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']">
-      Favourite Locations
+      Favourites
   </ion-button>
   </ion-toolbar>
 </ion-header>

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +17,7 @@ export class WeatherControllerService {
   }
 
   
-  getCurrentWeatherData(city: string): Promise<any> {//todo call from favourites list/favourites service to populate each item in the list
+  getCurrentWeatherData(city: string): Promise<any> {
     console.log(city);
     return new Promise((resolve, reject) => {
 
@@ -37,7 +35,7 @@ export class WeatherControllerService {
   }
 
   
-  getForecastData(city: string): Promise<any> {//todo call from favourites list/favourites service to populate each item in the list
+  getForecastData(city: string): Promise<any> {
     console.log(city);
     return new Promise((resolve, reject) => {
       this.http.get(

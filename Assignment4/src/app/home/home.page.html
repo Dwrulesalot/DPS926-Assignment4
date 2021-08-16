@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title slot="start" size="large">
-      Ionic/Angular WeatherAPI
+      WeatherApp
     </ion-title>
     <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']">
-        Favourite Locations
+        Favourites
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -20,12 +20,12 @@
           <ion-row>
             <ion-col>
               <div>
-                Current Weather in: {{item.name}}
+                Current City: {{item.name}}
               </div>
             </ion-col>
             <ion-col>
               <div>
-                Temperature of: {{item.main.temp}}°C
+                Temp of: {{item.main.temp}}°C
               </div>
             </ion-col>
             <ion-col>
@@ -35,12 +35,12 @@
             </ion-col>
             <ion-col>
               <div>
-                Today's Maximum Temperature: {{item.main.temp_max}}°C
+                Today's Max Temperature: {{item.main.temp_max}}°C
               </div>
             </ion-col>
             <ion-col>
               <div>
-                Today's Minimum Temperature: {{item.main.temp_min}}°C
+                Today's Min Temperature: {{item.main.temp_min}}°C
               </div>
             </ion-col>
           </ion-row>
