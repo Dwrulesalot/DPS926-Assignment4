@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WeatherControllerService } from './../services/weather-controller.service';
-//import { Storage } from "@ionic/storage-angular";
+import { Storage } from "@ionic/storage-angular";
 
 
 @Component({
@@ -11,8 +11,8 @@ import { WeatherControllerService } from './../services/weather-controller.servi
 })
 export class HomePage implements OnInit{
 
-  results: Observable<any>;//results of the query/search
-  currentWeatherDisplay: [];//delete if other way works
+  //results: Observable<any>;//results of the query/search
+  //currentWeatherDisplay: [];//delete if other way works
   
   query = '';//hurray two way binding
   
@@ -23,6 +23,7 @@ export class HomePage implements OnInit{
 
   // array of day strings used when rendering data
 
+  //storage: Storage;//need only in forecast rn - if slide worked I would have used that to add to favourites
 
   constructor(private weatherControllerService: WeatherControllerService) {}
 

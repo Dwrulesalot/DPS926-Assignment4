@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherControllerService } from './../services/weather-controller.service';
+import { FavouritesService, FavLocations } from './../services/favourites.service';
 
 @Component({
   selector: 'app-forecast-list',
@@ -12,7 +13,9 @@ export class ForecastListPage{
   // forecast weather items array
   forecastItems;
 
-  constructor(private weatherControllerService: WeatherControllerService) {
+  newFav: FavLocations = new FavLocations;
+
+  constructor(private weatherControllerService: WeatherControllerService, private favouritesService: FavouritesService) {
     
    }
 
@@ -30,6 +33,14 @@ export class ForecastListPage{
       this.updateForecastWeather(this.weatherControllerService.cityName);
   }
   }
+
+  addToFavClicked(){
+    this.newFav.cityName = this.titleName;
+    this.favouritesService.addFavourite(this.newFav);
+    this.newFav.cityName ='';//only holds it temporarily
+
+  }
+
   updateForecastWeather(cityName: string) {
     console.log('ForecastPage: updateForecastWeather()');
     // clear out the previous array contents

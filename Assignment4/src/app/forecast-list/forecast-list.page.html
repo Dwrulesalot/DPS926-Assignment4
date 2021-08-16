@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
    <ion-title size="large" >{{titleName}}'s Forecast</ion-title>
-    <ion-button color="primary" slot="end" (click)="addToFavClicked(item.name)"><!-- hopefully this doesn't break anything -->
+    <ion-button color="primary" slot="end" (click)="addToFavClicked()"><!-- hopefully this doesn't break anything -->
       Save Location to Favourites
   </ion-button>
     <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']"><!-- hopefully this doesn't break anything -->
