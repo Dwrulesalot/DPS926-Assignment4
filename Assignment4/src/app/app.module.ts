@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { IonicContextMenuModule } from 'ionic-context-menu';//sadly sliders weren't working
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +17,7 @@ import { IonicContextMenuModule } from 'ionic-context-menu';//sadly sliders were
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
-    HttpClientModule, 
-    IonicContextMenuModule
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
