@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherControllerService } from './../services/weather-controller.service';
 
 @Component({
   selector: 'app-favourites-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouritesListPage implements OnInit {
 
-  constructor() { }
+  constructor(private weatherControllerService: WeatherControllerService) { }
 
   ngOnInit() {
+  }
+  //set's the value for details page - eventually change to router
+  cityClicked(city: string){
+    this.weatherControllerService.cityName=city;
+    console.log("cityClicked: "+city);
   }
 
 }

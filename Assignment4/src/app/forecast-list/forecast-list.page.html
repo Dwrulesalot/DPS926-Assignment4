@@ -1,9 +1,60 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>forecastList</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+   <ion-title size="large" >{{titleName}}'s Forecast</ion-title>
+    <ion-button color="primary" slot="end" (click)="addToFavClicked(item.name)"><!-- hopefully this doesn't break anything -->
+      Save Location to Favourites
+  </ion-button>
+    <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']"><!-- hopefully this doesn't break anything -->
+      Favourite Locations
+  </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-list>
+    <!--once the result/getQuery is complete, lists each item as below-->
+    <ion-item *ngFor="let item of forecastItems ">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              {{item.dt_txt}}
+            </div>
+            <div>
+              Temperature: {{item.main.temp}}°C
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              Humidity: {{item.main.humidity}}%
+            </div>
+            <div>
+              Pressure: {{item.main.pressure}} millibars
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              Max Temp: {{item.main.temp_max}}°C
+            </div>
+            <div>
+              Min Temp: {{item.main.temp_min}}°C
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              {{item.weather[0].main}}
+            </div>
+            <div>
+              {{item.weather[0].description}}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    
+  <!--neither slider nor context menu are working-->
+</ion-list>
 </ion-content>

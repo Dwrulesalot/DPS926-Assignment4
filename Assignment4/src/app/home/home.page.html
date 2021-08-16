@@ -3,7 +3,7 @@
     <ion-title slot="start" size="large">
       Ionic/Angular WeatherAPI
     </ion-title>
-    <ion-button color="tertiary" slot="end" [routerLink]="['/favourites-list']"><!-- add routerLink here to navigate to favourites -->
+    <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']"><!-- add routerLink here to navigate to favourites -->
         Favourite Locations
     </ion-button>
   </ion-toolbar>
@@ -11,19 +11,42 @@
 
 <ion-content padding>
  
-  <ion-searchbar placeholder="Please enter a City, Region or Country" [(ngModel)]="query" (ionChange)="searchClicked($value)"> </ion-searchbar><!--this took 3 hours to figure out-->
+<ion-searchbar placeholder="Please enter a City, Region or Country" [(ngModel)]="query" (ionChange)="searchClicked($value)"> </ion-searchbar><!--this took 3 hours to figure out -->
   <ion-list>
       <!--once the result/getQuery is complete, lists each item as below-->
-      <ion-item *ngFor="let item of (currentWeatherDisplay | async)" [routerLink]="['/forecast-list', item.name]"><!-- change this line-->
-        <!-- can't use this till I actually get currentWeather items fml I forgot//this is next on the list change result
-        <ion-avatar slot="start">
-          <img [src]="">
-        </ion-avatar> 
-        -->
-        <!--{{item.name}}-->
+      <ion-item *ngFor="let item of currentItems " (click)="cityClicked(item.name)" [routerLink]="['/forecast', item.name]"><!-- change the routerlink-->
+        
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                Current Weather in: {{item.name}}
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Temperature of: {{item.main.temp}}°C
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Feels like: {{item.main.feels_like}}°C
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Today's Maximum Temperature: {{item.main.temp_max}}°C
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Today's Minimum Temperature: {{item.main.temp_min}}°C
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
       
     <!--neither slider nor context menu are working-->
   </ion-list>
 </ion-content>
-
