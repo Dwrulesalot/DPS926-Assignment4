@@ -10,6 +10,40 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content padding><ion-list>
+      <!--once the result/getQuery is complete, lists each item as below-->
+      <ion-item *ngFor="let item of favItems " (click)="cityClicked(item.name)" [routerLink]="['/forecast', item.name]">
+        <!-- need to add the option to delete - maybe change this^^ to an alert/delete? that or change the button text & color in details -->
+        
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                Current Weather in: {{item.name}}
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Temperature of: {{item.main.temp}}°C
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Feels like: {{item.main.feels_like}}°C
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Today's Maximum Temperature: {{item.main.temp_max}}°C
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                Today's Minimum Temperature: {{item.main.temp_min}}°C
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+  </ion-list>
 </ion-content>
