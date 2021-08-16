@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./favourites-list/favourites-list.module').then( m => m.FavouritesListPageModule)
   },
   {
-    path: 'forecast/:name',// passing name here which will be the city name which lets you api call the 7 day forecast of that location
+    path: 'forecast/:name',// passing name here which will be the city name which lets you api forecast of that location
     loadChildren: () => import('./forecast-list/forecast-list.module').then( m => m.ForecastListPageModule)
   },
 ];

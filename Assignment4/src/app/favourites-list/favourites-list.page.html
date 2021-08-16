@@ -13,7 +13,7 @@
 <ion-content padding><ion-list>
       <!--once the result/getQuery is complete, lists each item as below-->
       <ion-item *ngFor="let item of favDisplay " (click)="cityClicked(item.name)" [routerLink]="['/forecast', item.name]">
-        <!-- need to add the option to delete - maybe change this^^ to an alert/delete? that or change the button text & color in details -->
+        <!-- todo option to delete/alert that and/or change the button text & color in details -->
         
         <ion-grid>
           <ion-row>

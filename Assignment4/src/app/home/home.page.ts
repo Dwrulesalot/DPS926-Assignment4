@@ -10,26 +10,22 @@ import { Storage } from "@ionic/storage-angular";//if I get context menu/ slider
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-
-  //results: Observable<any>;//results of the query/search
-  //currentWeatherDisplay: [];//delete if other way works
   
-  query = '';//hurray two way binding
+  query = '';// two way binding
   
-  // current weather items array
   currentItems;
-  // forecast items array
-  //forecastItems: Array<any> = [];//here or in forecast list?
-
-  // array of day strings used when rendering data
-
-  //storage: Storage;//need only in forecast rn - if slide worked I would have used that to add to favourites
 
   constructor(private weatherControllerService: WeatherControllerService) {}
 
   ngOnInit(){
-   this.updateCurrentWeather('Toronto');//todo change this out to Cities in circle api call with lat, lon
-   this.weatherControllerService.cityName ='Toronto';
+    //populating menu with base cities
+   this.updateCurrentWeather('Toronto');
+   this.updateCurrentWeather('Quebec City');
+   this.updateCurrentWeather('Vancouver');
+   this.updateCurrentWeather('Calgary');
+   this.updateCurrentWeather('Ottawa');
+   this.updateCurrentWeather('Charlottetown');
+   this.updateCurrentWeather('Saskatoon');
   }
    searchClicked(){
      if(this.query!=null && this.query!=''){
@@ -41,29 +37,6 @@ export class HomePage implements OnInit{
       console.log("cityClicked: "+city);
     }
 
-//     this.results = this.weatherControllerService.GetQueryData(this.query);
-//     //this.results.subscribe()//probaly should do this in controller?
-//     this.results.subscribe(cities => {
-//       for(let city of cities){
-
-//         //this.currentWeatherDisplay =
-//         this.weatherControllerService.GetCurrentWeatherData(city.name).subscribe(city => {
-//           for(let data of city){
-//           this.currentWeatherDisplay = data;//this overwrites
-//           }
-//         });
-
-//       }
-//     console.log(this.currentWeatherDisplay);
-//     })
-// //  this.currentWeatherDisplay.subscribe(res => {  //instead of doing this I'll have the getQueryData loop through
-// //   for(let item of res){ }
-// //  })
-//     } else {
-//       //make an alert here
-//     }
-
-//   }
 
 updateCurrentWeather(cityName: string) {
   console.log('HomePage: updateCurrentWeather()');

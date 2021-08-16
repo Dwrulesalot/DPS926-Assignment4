@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { WeatherControllerService } from './../services/weather-controller.service';
 import { FavouritesService } from './../services/favourites.service';
 
@@ -9,22 +9,11 @@ import { FavouritesService } from './../services/favourites.service';
 })
 export class ForecastListPage{
 
-  titleName='';//todo change this to be forecast's path
-  // forecast weather items array
+  titleName='';//todo change this to be forecast's path need router
   forecastItems;
 
-  //newFav: FavLocations = new FavLocations;
 
-  constructor(private weatherControllerService: WeatherControllerService, private favouritesService: FavouritesService) {
-    
-   }
-
-  // ngOnInit() {
-  //   if(this.weatherControllerService.cityName!='' ||this.weatherControllerService.cityName!=null){
-  //       this.titleName = this.weatherControllerService.cityName;
-  //       this.updateForecastWeather(this.weatherControllerService.cityName);
-  //     }
-  // }
+  constructor(private weatherControllerService: WeatherControllerService, private favouritesService: FavouritesService) { }
 
   //todo change this to be forecast's path
   ngAfterContentInit(){

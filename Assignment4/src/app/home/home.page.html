@@ -3,7 +3,7 @@
     <ion-title slot="start" size="large">
       Ionic/Angular WeatherAPI
     </ion-title>
-    <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']"><!-- add routerLink here to navigate to favourites -->
+    <ion-button color="tertiary" slot="end" [routerLink]="['/favourites']">
         Favourite Locations
     </ion-button>
   </ion-toolbar>
@@ -11,10 +11,10 @@
 
 <ion-content padding>
  
-<ion-searchbar placeholder="Please enter a City, Region or Country" [(ngModel)]="query" (ionChange)="searchClicked($value)"> </ion-searchbar><!--this took 3 hours to figure out -->
+<ion-searchbar placeholder="Please enter a City, Region or Country" [(ngModel)]="query" (ionChange)="searchClicked($value)"> </ion-searchbar>
   <ion-list>
       <!--once the result/getQuery is complete, lists each item as below-->
-      <ion-item *ngFor="let item of currentItems " (click)="cityClicked(item.name)" [routerLink]="['/forecast', item.name]"><!-- change the routerlink-->
+      <ion-item *ngFor="let item of currentItems " (click)="cityClicked(item.name)" [routerLink]="['/forecast', item.name]">
         
         <ion-grid>
           <ion-row>
@@ -46,7 +46,6 @@
           </ion-row>
         </ion-grid>
       </ion-item>
-      
-    <!--neither slider nor context menu are working-->
+
   </ion-list>
 </ion-content>
