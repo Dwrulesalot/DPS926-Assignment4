@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherControllerService } from './../services/weather-controller.service';
-import { FavouritesService, FavLocations } from './../services/favourites.service';
+import { FavouritesService } from './../services/favourites.service';
 
 @Component({
   selector: 'app-forecast-list',
@@ -13,7 +13,7 @@ export class ForecastListPage{
   // forecast weather items array
   forecastItems;
 
-  newFav: FavLocations = new FavLocations;
+  //newFav: FavLocations = new FavLocations;
 
   constructor(private weatherControllerService: WeatherControllerService, private favouritesService: FavouritesService) {
     
@@ -35,9 +35,10 @@ export class ForecastListPage{
   }
 
   addToFavClicked(){
-    this.newFav.cityName = this.titleName;
-    this.favouritesService.addFavourite(this.newFav);
-    this.newFav.cityName ='';//only holds it temporarily
+    //this.newFav.cityName = this.titleName;
+    this.favouritesService.set('my-favs',this.titleName);
+    
+    //this.newFav.cityName ='';//only holds it temporarily
 
   }
 

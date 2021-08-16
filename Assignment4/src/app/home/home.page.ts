@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WeatherControllerService } from './../services/weather-controller.service';
-import { Storage } from "@ionic/storage-angular";
+import { Storage } from "@ionic/storage-angular";//if I get context menu/ sliders or something similar working I should eventually upgrade this project
 
 
 @Component({
